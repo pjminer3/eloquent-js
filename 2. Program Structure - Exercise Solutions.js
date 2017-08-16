@@ -55,6 +55,18 @@ for (var i = 1; i <= size * size; i++) {
 
 console.log(line);
 
+// Improved/Refactored Solution
+var size = 10;
+var line = '';
+for (var y = 0; y < size; y++) {
+  for (var x = 0; x < size; x++) {
+    ((y + x) % 2 === 0) ? board += ' ' : board += '#'; 
+  }
+  board += '\n';
+}
+
+console.log(board);
+
 
 
 
