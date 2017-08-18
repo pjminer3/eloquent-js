@@ -90,7 +90,30 @@ function nth(list, number) {
 
 
 // DEEP COMPARISON
+// Write function deepEqual that takes two values and returns true only if they are the same value or objects with the same properties whose values are also equal
+// For objects, their properties and values, use recursion to ensure all are equal
+function deepEqual(val1, val2) {
+  if (val1 === val2) return true; // Checks to see if two non-object values (Boolean, number, string) are equal to eachother
 
+  if (val1 === null || typeof val1 !== 'object' || val2 === null || typeof val2 !== 'object') {
+  	return false;
+  } // Checks to ensure that if there is a null value or a value that is not equal to an object (and therefore not equal to its counter) to return false
+
+  var propsInVal1 = 0, propsInVal2 = 0;
+
+  for (var property in val1) {
+    propsInVal1 += 1;
+  } // determine number of properties in val1
+
+  for (var property in val2) {
+    propsInVal2 += 1;
+
+    if (!(property in val1) || !deepEqual(val1[property], val2[property])) { // checks make sure that each property in val2 is also in val1, and that their values are equal
+      return false;
+    }
+  }
+  return propsInVal1 === propsInVal2;  // make sure the objects have the same number of properties
+}
 
 
 
